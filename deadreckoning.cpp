@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'deadreckoning'.
 //
-// Model version                  : 1.129
+// Model version                  : 1.131
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Thu Apr 20 15:03:55 2017
+// C/C++ source code generated on : Thu Apr 20 15:33:18 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -201,7 +201,7 @@ void deadreckoning_step(void)
     //  set our output to be a copy of the input (blankMsg)
     // MATLAB Function 'odometry_header': '<S9>:1'
     // '<S9>:1:5' outputMsg = blankMsg;
-    deadreckoning_B.outputMsg = deadreckoning_P.Constant_Value;
+    deadreckoning_B.outputMsg = deadreckoning_P.Constant_Value_k;
 
     //  set the frame to be relative to our base of 0. If you want to use data
     //  coming from another detection, then you can set the /detections to be in 
@@ -236,13 +236,13 @@ void deadreckoning_step(void)
     //   MATLABSystem: '<S8>/SourceBlock'
 
     varargout_1 = Sub_deadreckoning_127.getLatestMessage
-      (&deadreckoning_B.varargout_2_c);
+      (&deadreckoning_B.varargout_2);
 
     // Outputs for Enabled SubSystem: '<S8>/Enabled Subsystem' incorporates:
     //   EnablePort: '<S15>/Enable'
 
     if (varargout_1) {
-      deadreckoning_B.In1_h = deadreckoning_B.varargout_2_c;
+      deadreckoning_B.In1 = deadreckoning_B.varargout_2;
     }
 
     // End of Start for MATLABSystem: '<S8>/SourceBlock'
@@ -282,7 +282,7 @@ void deadreckoning_step(void)
   deadreckoning_B.BusAssignment.Pose.Pose.Orientation.W = rtb_sincos_o2_idx_0 *
     rtb_sincos_o2_idx_1 * rtb_Fromsteeringpercenttosteeri + rtb_sincos_o1_idx_0 *
     rtb_sincos_o1_idx_1 * rtb_sincos_o1_idx_2;
-  deadreckoning_B.BusAssignment.Header.Stamp = deadreckoning_B.In1_h.Clock_;
+  deadreckoning_B.BusAssignment.Header.Stamp = deadreckoning_B.In1.Header.Stamp;
   deadreckoning_B.BusAssignment.Header.Seq = deadreckoning_B.Output;
 
   // Outputs for Atomic SubSystem: '<Root>/Publish'
@@ -315,13 +315,13 @@ void deadreckoning_step(void)
     //   MATLABSystem: '<S7>/SourceBlock'
 
     varargout_1 = Sub_deadreckoning_121.getLatestMessage
-      (&deadreckoning_B.varargout_2_m);
+      (&deadreckoning_B.varargout_2_c);
 
     // Outputs for Enabled SubSystem: '<S7>/Enabled Subsystem' incorporates:
     //   EnablePort: '<S14>/Enable'
 
     if (varargout_1) {
-      deadreckoning_B.In1_c = deadreckoning_B.varargout_2_m;
+      deadreckoning_B.In1_c = deadreckoning_B.varargout_2_c;
     }
 
     // End of Start for MATLABSystem: '<S7>/SourceBlock'
@@ -334,13 +334,13 @@ void deadreckoning_step(void)
     //   MATLABSystem: '<S5>/SourceBlock'
 
     varargout_1 = Sub_deadreckoning_1.getLatestMessage
-      (&deadreckoning_B.varargout_2);
+      (&deadreckoning_B.varargout_2_m);
 
     // Outputs for Enabled SubSystem: '<S5>/Enabled Subsystem' incorporates:
     //   EnablePort: '<S12>/Enable'
 
     if (varargout_1) {
-      deadreckoning_B.In1 = deadreckoning_B.varargout_2;
+      deadreckoning_B.In1_m = deadreckoning_B.varargout_2_m;
     }
 
     // End of Start for MATLABSystem: '<S5>/SourceBlock'
@@ -353,19 +353,19 @@ void deadreckoning_step(void)
 
     deadreckoning_B.thetadotvelsinsteering1L = sin
       (-deadreckoning_B.In1_c.Torque.Z * deadreckoning_P.Constant_Value_h /
-       100.0) * deadreckoning_B.In1.Linear.X / 2.62;
+       100.0) * deadreckoning_B.In1_m.Linear.X / 2.62;
   }
 
   // Fcn: '<Root>/xdot = vel * cos (heading) ' incorporates:
   //   Integrator: '<Root>/Integrator2'
 
-  deadreckoning_B.xdotvelcosheading = deadreckoning_B.In1.Linear.X * cos
+  deadreckoning_B.xdotvelcosheading = deadreckoning_B.In1_m.Linear.X * cos
     (deadreckoning_X.Integrator2_CSTATE);
 
   // Fcn: '<Root>/ydot = vel * sin (heading)' incorporates:
   //   Integrator: '<Root>/Integrator2'
 
-  deadreckoning_B.ydotvelsinheading = deadreckoning_B.In1.Linear.X * sin
+  deadreckoning_B.ydotvelsinheading = deadreckoning_B.In1_m.Linear.X * sin
     (deadreckoning_X.Integrator2_CSTATE);
   if (rtmIsMajorTimeStep(deadreckoning_M)) {
     if (rtmIsMajorTimeStep(deadreckoning_M)) {
@@ -510,23 +510,25 @@ void deadreckoning_initialize(void)
       'c', 'l', 'e', '/', 'o', 'd', 'o', 'm', '_', 'd', 'e', 'a', 'd', 'r', 'e',
       'c', 'k', 'o', 'n', 'i', 'n', 'g' };
 
-    static const char_T tmp_2[6] = { '/', 'c', 'l', 'o', 'c', 'k' };
+    static const char_T tmp_2[30] = { '/', 'c', 'a', 't', 'v', 'e', 'h', 'i',
+      'c', 'l', 'e', '/', 'f', 'r', 'o', 'n', 't', '_', 'l', 'a', 's', 'e', 'r',
+      '_', 'p', 'o', 'i', 'n', 't', 's' };
 
     char_T tmp_3[16];
     char_T tmp_4[21];
-    char_T tmp_5[7];
     int32_T i;
 
     // Start for Atomic SubSystem: '<Root>/Subscribe4'
     // Start for MATLABSystem: '<S8>/SourceBlock'
     deadreckoning_DW.obj_o.isInitialized = 0;
     deadreckoning_DW.obj_o.isInitialized = 1;
-    for (i = 0; i < 6; i++) {
-      tmp_5[i] = tmp_2[i];
+    for (i = 0; i < 30; i++) {
+      deadreckoning_B.cv0[i] = tmp_2[i];
     }
 
-    tmp_5[6] = '\x00';
-    Sub_deadreckoning_127.createSubscriber(tmp_5, deadreckoning_MessageQueueLen);
+    deadreckoning_B.cv0[30] = '\x00';
+    Sub_deadreckoning_127.createSubscriber(deadreckoning_B.cv0,
+      deadreckoning_MessageQueueLen);
 
     // End of Start for MATLABSystem: '<S8>/SourceBlock'
     // End of Start for SubSystem: '<Root>/Subscribe4'
@@ -589,7 +591,7 @@ void deadreckoning_initialize(void)
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe4'
     // SystemInitialize for Enabled SubSystem: '<S8>/Enabled Subsystem'
     // SystemInitialize for Outport: '<S15>/Out1'
-    deadreckoning_B.In1_h = deadreckoning_P.Out1_Y0_a;
+    deadreckoning_B.In1 = deadreckoning_P.Out1_Y0;
 
     // End of SystemInitialize for SubSystem: '<S8>/Enabled Subsystem'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe4'
@@ -605,7 +607,7 @@ void deadreckoning_initialize(void)
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe'
     // SystemInitialize for Enabled SubSystem: '<S5>/Enabled Subsystem'
     // SystemInitialize for Outport: '<S12>/Out1'
-    deadreckoning_B.In1 = deadreckoning_P.Out1_Y0;
+    deadreckoning_B.In1_m = deadreckoning_P.Out1_Y0_f;
 
     // End of SystemInitialize for SubSystem: '<S5>/Enabled Subsystem'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe'

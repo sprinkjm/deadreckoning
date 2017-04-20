@@ -203,20 +203,38 @@ void convertToBus(SL_Bus_deadreckoning_ros_time_Time* busPtr, ros::Time const* m
 }
 
 
-// Conversions between SL_Bus_deadreckoning_rosgraph_msgs_Clock and rosgraph_msgs::Clock
+// Conversions between SL_Bus_deadreckoning_sensor_msgs_LaserScan and sensor_msgs::LaserScan
 
-void convertFromBus(rosgraph_msgs::Clock* msgPtr, SL_Bus_deadreckoning_rosgraph_msgs_Clock const* busPtr)
+void convertFromBus(sensor_msgs::LaserScan* msgPtr, SL_Bus_deadreckoning_sensor_msgs_LaserScan const* busPtr)
 {
-  const std::string rosMessageType("rosgraph_msgs/Clock");
+  const std::string rosMessageType("sensor_msgs/LaserScan");
 
-  convertFromBus(&msgPtr->clock, &busPtr->Clock_);
+  msgPtr->angle_increment =  busPtr->AngleIncrement;
+  msgPtr->angle_max =  busPtr->AngleMax;
+  msgPtr->angle_min =  busPtr->AngleMin;
+  convertFromBus(&msgPtr->header, &busPtr->Header);
+  convertFromBusVariablePrimitiveArray(msgPtr->intensities, busPtr->Intensities, busPtr->Intensities_SL_Info);
+  msgPtr->range_max =  busPtr->RangeMax;
+  msgPtr->range_min =  busPtr->RangeMin;
+  convertFromBusVariablePrimitiveArray(msgPtr->ranges, busPtr->Ranges, busPtr->Ranges_SL_Info);
+  msgPtr->scan_time =  busPtr->ScanTime;
+  msgPtr->time_increment =  busPtr->TimeIncrement;
 }
 
-void convertToBus(SL_Bus_deadreckoning_rosgraph_msgs_Clock* busPtr, rosgraph_msgs::Clock const* msgPtr)
+void convertToBus(SL_Bus_deadreckoning_sensor_msgs_LaserScan* busPtr, sensor_msgs::LaserScan const* msgPtr)
 {
-  const std::string rosMessageType("rosgraph_msgs/Clock");
+  const std::string rosMessageType("sensor_msgs/LaserScan");
 
-  convertToBus(&busPtr->Clock_, &msgPtr->clock);
+  busPtr->AngleIncrement =  msgPtr->angle_increment;
+  busPtr->AngleMax =  msgPtr->angle_max;
+  busPtr->AngleMin =  msgPtr->angle_min;
+  convertToBus(&busPtr->Header, &msgPtr->header);
+  convertToBusVariablePrimitiveArray(busPtr->Intensities, busPtr->Intensities_SL_Info, msgPtr->intensities, slros::EnabledWarning(rosMessageType, "intensities"));
+  busPtr->RangeMax =  msgPtr->range_max;
+  busPtr->RangeMin =  msgPtr->range_min;
+  convertToBusVariablePrimitiveArray(busPtr->Ranges, busPtr->Ranges_SL_Info, msgPtr->ranges, slros::EnabledWarning(rosMessageType, "ranges"));
+  busPtr->ScanTime =  msgPtr->scan_time;
+  busPtr->TimeIncrement =  msgPtr->time_increment;
 }
 
 

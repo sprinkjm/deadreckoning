@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'deadreckoning'.
 //
-// Model version                  : 1.129
+// Model version                  : 1.131
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Thu Apr 20 15:03:55 2017
+// C/C++ source code generated on : Thu Apr 20 15:33:18 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)

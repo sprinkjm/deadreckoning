@@ -10,7 +10,7 @@ SimulinkSubscriber<geometry_msgs::Twist, SL_Bus_deadreckoning_geometry_msgs_Twis
 SimulinkSubscriber<geometry_msgs::Wrench, SL_Bus_deadreckoning_geometry_msgs_Wrench> Sub_deadreckoning_121;
 
 // For Block deadreckoning/Subscribe4
-SimulinkSubscriber<rosgraph_msgs::Clock, SL_Bus_deadreckoning_rosgraph_msgs_Clock> Sub_deadreckoning_127;
+SimulinkSubscriber<sensor_msgs::LaserScan, SL_Bus_deadreckoning_sensor_msgs_LaserScan> Sub_deadreckoning_127;
 
 // For Block deadreckoning/Publish
 SimulinkPublisher<nav_msgs::Odometry, SL_Bus_deadreckoning_nav_msgs_Odometry> Pub_deadreckoning_79;

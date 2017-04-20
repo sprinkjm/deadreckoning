@@ -12,7 +12,7 @@
 #include <geometry_msgs/Wrench.h>
 #include <nav_msgs/Odometry.h>
 #include <ros/time.h>
-#include <rosgraph_msgs/Clock.h>
+#include <sensor_msgs/LaserScan.h>
 #include <std_msgs/Header.h>
 #include "deadreckoning_types.h"
 #include "slros_msgconvert_utils.h"
@@ -48,8 +48,8 @@ void convertToBus(SL_Bus_deadreckoning_nav_msgs_Odometry* busPtr, nav_msgs::Odom
 void convertFromBus(ros::Time* msgPtr, SL_Bus_deadreckoning_ros_time_Time const* busPtr);
 void convertToBus(SL_Bus_deadreckoning_ros_time_Time* busPtr, ros::Time const* msgPtr);
 
-void convertFromBus(rosgraph_msgs::Clock* msgPtr, SL_Bus_deadreckoning_rosgraph_msgs_Clock const* busPtr);
-void convertToBus(SL_Bus_deadreckoning_rosgraph_msgs_Clock* busPtr, rosgraph_msgs::Clock const* msgPtr);
+void convertFromBus(sensor_msgs::LaserScan* msgPtr, SL_Bus_deadreckoning_sensor_msgs_LaserScan const* busPtr);
+void convertToBus(SL_Bus_deadreckoning_sensor_msgs_LaserScan* busPtr, sensor_msgs::LaserScan const* msgPtr);
 
 void convertFromBus(std_msgs::Header* msgPtr, SL_Bus_deadreckoning_std_msgs_Header const* busPtr);
 void convertToBus(SL_Bus_deadreckoning_std_msgs_Header* busPtr, std_msgs::Header const* msgPtr);

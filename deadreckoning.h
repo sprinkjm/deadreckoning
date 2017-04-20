@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'deadreckoning'.
 //
-// Model version                  : 1.129
+// Model version                  : 1.131
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Thu Apr 20 15:03:55 2017
+// C/C++ source code generated on : Thu Apr 20 15:33:18 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -146,18 +146,18 @@
 
 // Block signals (auto storage)
 typedef struct {
+  SL_Bus_deadreckoning_sensor_msgs_LaserScan In1;// '<S15>/In1'
+  SL_Bus_deadreckoning_sensor_msgs_LaserScan varargout_2;
   SL_Bus_deadreckoning_nav_msgs_Odometry outputMsg;// '<Root>/odometry_header'
   SL_Bus_deadreckoning_nav_msgs_Odometry BusAssignment;// '<Root>/Bus Assignment' 
-  SL_Bus_deadreckoning_geometry_msgs_Twist In1;// '<S12>/In1'
-  SL_Bus_deadreckoning_geometry_msgs_Twist varargout_2;
+  SL_Bus_deadreckoning_geometry_msgs_Twist In1_m;// '<S12>/In1'
+  SL_Bus_deadreckoning_geometry_msgs_Twist varargout_2_m;
   SL_Bus_deadreckoning_geometry_msgs_Wrench In1_c;// '<S14>/In1'
-  SL_Bus_deadreckoning_geometry_msgs_Wrench varargout_2_m;
+  SL_Bus_deadreckoning_geometry_msgs_Wrench varargout_2_c;
   char_T cv0[31];
   real_T thetadotvelsinsteering1L;     // '<Root>/thetadot = vel*sin(steering)*(1//L)' 
   real_T xdotvelcosheading;            // '<Root>/xdot = vel * cos (heading) '
   real_T ydotvelsinheading;            // '<Root>/ydot = vel * sin (heading)'
-  SL_Bus_deadreckoning_rosgraph_msgs_Clock In1_h;// '<S15>/In1'
-  SL_Bus_deadreckoning_rosgraph_msgs_Clock varargout_2_c;
   uint32_T Output;                     // '<S2>/Output'
 } B_deadreckoning_T;
 
@@ -215,11 +215,17 @@ struct P_deadreckoning_T_ {
   uint32_T WrapToZero_Threshold;       // Mask Parameter: WrapToZero_Threshold
                                        //  Referenced by: '<S11>/FixPt Switch'
 
-  SL_Bus_deadreckoning_nav_msgs_Odometry Constant_Value;// Computed Parameter: Constant_Value
-                                                        //  Referenced by: '<S1>/Constant'
+  SL_Bus_deadreckoning_sensor_msgs_LaserScan Out1_Y0;// Computed Parameter: Out1_Y0
+                                                     //  Referenced by: '<S15>/Out1'
 
-  SL_Bus_deadreckoning_geometry_msgs_Twist Out1_Y0;// Computed Parameter: Out1_Y0
-                                                   //  Referenced by: '<S12>/Out1'
+  SL_Bus_deadreckoning_sensor_msgs_LaserScan Constant_Value;// Computed Parameter: Constant_Value
+                                                            //  Referenced by: '<S8>/Constant'
+
+  SL_Bus_deadreckoning_nav_msgs_Odometry Constant_Value_k;// Computed Parameter: Constant_Value_k
+                                                          //  Referenced by: '<S1>/Constant'
+
+  SL_Bus_deadreckoning_geometry_msgs_Twist Out1_Y0_f;// Computed Parameter: Out1_Y0_f
+                                                     //  Referenced by: '<S12>/Out1'
 
   SL_Bus_deadreckoning_geometry_msgs_Twist Constant_Value_d;// Computed Parameter: Constant_Value_d
                                                             //  Referenced by: '<S5>/Constant'
@@ -259,12 +265,6 @@ struct P_deadreckoning_T_ {
 
   real_T Constant_Value_h;             // Expression: 34*pi/180
                                        //  Referenced by: '<Root>/Constant'
-
-  SL_Bus_deadreckoning_rosgraph_msgs_Clock Out1_Y0_a;// Computed Parameter: Out1_Y0_a
-                                                     //  Referenced by: '<S15>/Out1'
-
-  SL_Bus_deadreckoning_rosgraph_msgs_Clock Constant_Value_o;// Computed Parameter: Constant_Value_o
-                                                            //  Referenced by: '<S8>/Constant'
 
   uint32_T Constant_Value_m;           // Computed Parameter: Constant_Value_m
                                        //  Referenced by: '<S11>/Constant'

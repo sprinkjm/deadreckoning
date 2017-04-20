@@ -9,7 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
 geometry_msgs
 nav_msgs
 roscpp
-rosgraph_msgs
+sensor_msgs
 std_msgs
 )
 
@@ -23,7 +23,7 @@ add_definitions(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-   CATKIN_DEPENDS geometry_msgs nav_msgs roscpp rosgraph_msgs std_msgs 
+   CATKIN_DEPENDS geometry_msgs nav_msgs roscpp sensor_msgs std_msgs 
 )
 
 ###########
