@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'deadreckoning'.
 //
-// Model version                  : 1.131
+// Model version                  : 1.132
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Thu Apr 20 15:33:18 2017
+// C/C++ source code generated on : Thu Apr 20 15:37:49 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -201,13 +201,13 @@ typedef struct {
   real32_T RangeMax;
 
   // IsVarLen=1:VarLenCategory=data:VarLenElem=Ranges_SL_Info:TruncateAction=warn 
-  real32_T Ranges[128];
+  real32_T Ranges[190];
 
   // IsVarLen=1:VarLenCategory=length:VarLenElem=Ranges
   SL_Bus_ROSVariableLengthArrayInfo Ranges_SL_Info;
 
   // IsVarLen=1:VarLenCategory=data:VarLenElem=Intensities_SL_Info:TruncateAction=warn 
-  real32_T Intensities[128];
+  real32_T Intensities[190];
 
   // IsVarLen=1:VarLenCategory=length:VarLenElem=Intensities
   SL_Bus_ROSVariableLengthArrayInfo Intensities_SL_Info;
