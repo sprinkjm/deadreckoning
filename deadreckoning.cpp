@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'deadreckoning'.
 //
-// Model version                  : 1.127
+// Model version                  : 1.129
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Wed Apr 19 13:27:45 2017
+// C/C++ source code generated on : Thu Apr 20 15:03:55 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -141,9 +141,8 @@ void deadreckoning_step(void)
 {
   // local block i/o variables
   uint32_T rtb_FixPtSwitch;
-  static const uint8_T b[29] = { 99U, 97U, 116U, 118U, 101U, 104U, 105U, 99U,
-    108U, 101U, 47U, 111U, 100U, 111U, 109U, 95U, 100U, 101U, 97U, 100U, 114U,
-    101U, 99U, 107U, 111U, 110U, 105U, 110U, 103U };
+  static const uint8_T b[15] = { 99U, 97U, 116U, 118U, 101U, 104U, 105U, 99U,
+    108U, 101U, 47U, 111U, 100U, 111U, 109U };
 
   static const uint8_T c[20] = { 99U, 97U, 116U, 118U, 101U, 104U, 105U, 99U,
     108U, 101U, 47U, 98U, 97U, 115U, 101U, 95U, 108U, 105U, 110U, 107U };
@@ -207,16 +206,16 @@ void deadreckoning_step(void)
     //  set the frame to be relative to our base of 0. If you want to use data
     //  coming from another detection, then you can set the /detections to be in 
     //  the frame of that specific sensor
-    // '<S9>:1:10' str = 'catvehicle/odom_deadreckoning';
+    // '<S9>:1:10' str = 'catvehicle/odom';
     // '<S9>:1:11' strLength = length(str);
     //  initialize the header and set its values
     // '<S9>:1:13' outputMsg.Header.FrameId(1:strLength) = str;
-    for (i = 0; i < 29; i++) {
+    for (i = 0; i < 15; i++) {
       deadreckoning_B.outputMsg.Header.FrameId[i] = b[i];
     }
 
     // '<S9>:1:14' outputMsg.Header.FrameId_SL_Info.CurrentLength = uint32(strLength); 
-    deadreckoning_B.outputMsg.Header.FrameId_SL_Info.CurrentLength = 29U;
+    deadreckoning_B.outputMsg.Header.FrameId_SL_Info.CurrentLength = 15U;
 
     // '<S9>:1:15' strChild = 'catvehicle/base_link';
     // '<S9>:1:16' strChildLength = length(strChild);

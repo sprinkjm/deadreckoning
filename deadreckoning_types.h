@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'deadreckoning'.
 //
-// Model version                  : 1.127
+// Model version                  : 1.129
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Wed Apr 19 13:27:45 2017
+// C/C++ source code generated on : Thu Apr 20 15:03:55 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -19,6 +19,18 @@
 #ifndef RTW_HEADER_deadreckoning_types_h_
 #define RTW_HEADER_deadreckoning_types_h_
 #include "rtwtypes.h"
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_deadreckoning_geometry_msgs_Point_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_deadreckoning_geometry_msgs_Point_
+
+// MsgType=geometry_msgs/Point
+typedef struct {
+  real_T X;
+  real_T Y;
+  real_T Z;
+} SL_Bus_deadreckoning_geometry_msgs_Point;
+
+#endif
+
 #ifndef DEFINED_TYPEDEF_FOR_SL_Bus_ROSVariableLengthArrayInfo_
 #define DEFINED_TYPEDEF_FOR_SL_Bus_ROSVariableLengthArrayInfo_
 
@@ -56,18 +68,6 @@ typedef struct {
   // MsgType=ros_time/Time
   SL_Bus_deadreckoning_ros_time_Time Stamp;
 } SL_Bus_deadreckoning_std_msgs_Header;
-
-#endif
-
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_deadreckoning_geometry_msgs_Point_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_deadreckoning_geometry_msgs_Point_
-
-// MsgType=geometry_msgs/Point
-typedef struct {
-  real_T X;
-  real_T Y;
-  real_T Z;
-} SL_Bus_deadreckoning_geometry_msgs_Point;
 
 #endif
 
